@@ -2,9 +2,8 @@ package minheap_test
 
 import (
 	"fmt"
-	"testing"
-
 	"github.com/senyc/godsa/pkg/minheap"
+	"testing"
 )
 
 func TestBuildHeap(t *testing.T) {

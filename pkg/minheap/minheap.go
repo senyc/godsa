@@ -19,11 +19,9 @@ func (h *MinHeap) heapify(i, heapSize int) {
 	if l < heapSize && hv[l] < hv[i] {
 		min = l
 	}
-
 	if r < heapSize && hv[r] < hv[min] {
 		min = r
 	}
-
 	if min != i {
 		hv[i], hv[min] = hv[min], hv[i]
 		h.heapify(min, heapSize)
