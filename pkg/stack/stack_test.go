@@ -34,7 +34,7 @@ func TestPop(t *testing.T) {
 	v := 2
 	s.Push(v)
 
-	if p := s.Pop(); p != v {
+	if p, _ := s.Pop(); p != v {
 		t.Error(p, "does not equal", v)
 	}
 	if !s.IsEmpty() {
@@ -47,10 +47,28 @@ func TestPeek(t *testing.T) {
 	v := 2
 	s.Push(v)
 
-	if p := s.Peek(); p != v {
+	if p, _ := s.Peek(); p != v {
 		t.Error(p, "does not equal", v)
 	}
 	if s.IsEmpty() {
 		t.Error("Peek removed value")
+	}
+}
+
+func TestEmptyStackFailure(t *testing.T) {
+	s := make(stack.Stack[int], 0)
+	v := 2
+	s.Push(v)
+	s.Pop()
+
+	if p, err := s.Peek(); p != v {
+		if err == nil {
+			t.Error("Does not fail on empty stack")
+		}
+	}
+	if p, err := s.Pop(); p != v {
+		if err == nil {
+			t.Error("Does not fail on empty stack")
+		}
 	}
 }
