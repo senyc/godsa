@@ -51,3 +51,22 @@ func (t *Trie) WordExist(word string) bool {
 	}
 	return currNode.isWord
 }
+
+func countNodes(t *TrieNode) int {
+	if len(t.children) == 0 {
+		return 0
+	}
+	count := 1
+	for i := range t.children {
+		count += countNodes(t.children[i])
+	}
+	return count
+}
+
+func CountSubstrings(s string) int {
+	tr := New()
+	for i := 0; i < len(s); i++ {
+		tr.Add(s[i:])
+	}
+	return countNodes(tr.root)
+}
