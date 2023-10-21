@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func TestBaseCase(t *testing.T) {
+func TestPow(t *testing.T) {
 	test := []struct {
 		input struct {
 			val int
@@ -17,6 +17,14 @@ func TestBaseCase(t *testing.T) {
 			val int
 			pow int
 		}{2, 10}, 1024},
+		{struct {
+			val int
+			pow int
+		}{1, 10}, 1},
+		{struct {
+			val int
+			pow int
+		}{5, 2}, 25},
 	}
 
 	for _, i := range test {
